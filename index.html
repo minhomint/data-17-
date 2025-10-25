@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 17곡 총공 전후  C</title>
+    <title>📻 라디오 선곡표 바로가기</title>
     <style>
         * {
             margin: 0;
@@ -12,907 +12,308 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard", Arial, sans-serif;
-            background: linear-gradient(135deg, #0d7377 0%, #14FFEC 50%, #00CEC9 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
             min-height: 100vh;
-            padding: 10px;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 206, 201, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(20, 255, 236, 0.2) 0%, transparent 50%);
-            animation: pulse 4s ease-in-out infinite;
-            pointer-events: none;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        
-        .floating-hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .heart {
-            position: absolute;
-            font-size: 20px;
-            opacity: 0;
-            animation: float-up 6s ease-in infinite;
-        }
-        
-        @keyframes float-up {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
         }
         
-        .header {
-            background: linear-gradient(135deg, #00CEC9 0%, #14FFEC 100%);
-            border-radius: 20px 20px 0 0;
-            padding: 30px;
+        h1 {
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 206, 201, 0.4);
-        }
-        
-        .header::before {
-            content: '⚡';
-            position: absolute;
-            font-size: 200px;
-            opacity: 0.1;
-            top: -50px;
-            right: -30px;
-            animation: rotate 10s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .admin-lock {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 10;
-            font-size: 20px;
-        }
-        
-        .admin-lock:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.1);
-        }
-        
-        .header h1 {
-            font-size: 48px;
             color: white;
-            font-weight: 900;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
-        .header h2 {
-            font-size: 32px;
-            color: #fff;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .live-badge {
-            display: inline-block;
-            background: #00CEC9;
-            color: white;
-            padding: 8px 20px;
+        .time-section {
+            background: white;
             border-radius: 20px;
-            font-size: 14px;
-            font-weight: 700;
-            animation: blink 1.5s ease-in-out infinite;
-            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.5);
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .mission-banner {
-            background: linear-gradient(90deg, #00CEC9 0%, #14FFEC 50%, #0dcaf0 100%);
-            padding: 20px;
-            text-align: center;
-            color: white;
-            font-size: 20px;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            animation: gradient-shift 3s ease infinite;
-            background-size: 200% 200%;
-        }
-        
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-
-        
-        .video-container {
-            background: #000;
-            position: relative;
-        }
-        
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-        
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .video-info {
-            background: linear-gradient(135deg, #2d3436 0%, #1e272e 100%);
             padding: 25px;
-            color: white;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
         
-        .now-playing {
-            font-size: 14px;
-            color: #00CEC9;
-            font-weight: 700;
-            margin-bottom: 10px;
+        .time-header {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
         }
         
-        .video-title {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: white;
+        .time-icon {
+            font-size: 2em;
         }
         
-        .timer-box {
-            background: rgba(0, 206, 201, 0.2);
-            padding: 10px 20px;
-            border-radius: 15px;
-            border: 2px solid #00CEC9;
-            text-align: center;
-            margin-bottom: 15px;
+        .time-title {
+            font-size: 1.8em;
+            color: #667eea;
+            font-weight: bold;
         }
         
-        .timer-number {
-            color: #00CEC9;
-            font-weight: 800;
-            font-size: 20px;
+        .time-range {
+            color: #888;
+            font-size: 0.9em;
+            margin-left: auto;
         }
         
-        .next-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #00CEC9 0%, #14FFEC 100%);
-            color: white;
-            border: none;
-            border-radius: 15px;
-            font-size: 18px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 6px 20px rgba(0, 206, 201, 0.4);
+        .program-section {
+            margin-bottom: 20px;
         }
         
-        .next-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 206, 201, 0.6);
+        .program-section:last-child {
+            margin-bottom: 0;
         }
         
-        .stats-section {
-            background: white;
-            padding: 30px;
-        }
-        
-        .table-container {
-            overflow-x: auto;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 206, 201, 0.2);
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-        }
-        
-        thead {
-            background: linear-gradient(135deg, #00CEC9 0%, #14FFEC 100%);
-            color: white;
-        }
-        
-        th {
-            padding: 18px 15px;
-            font-weight: 700;
-            font-size: 14px;
-            text-align: left;
-        }
-        
-        th:nth-child(2), th:nth-child(3), th:nth-child(4) {
-            text-align: center;
-        }
-        
-        tbody tr {
-            border-bottom: 2px solid #f1f3f5;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        tbody tr:hover {
-            background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
-            transform: translateX(5px);
-        }
-        
-        tbody tr.playing {
-            background: linear-gradient(90deg, #d1f8f6 0%, #a8e6e3 100%);
-            border-left: 5px solid #00CEC9;
-        }
-        
-        td {
-            padding: 18px 15px;
-            font-size: 15px;
-        }
-        
-        td:nth-child(2), td:nth-child(3), td:nth-child(4) {
-            text-align: center;
-        }
-        
-        .song-title {
-            font-weight: 700;
-            color: #2d3436;
+        .program-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .play-icon {
-            color: #00CEC9;
-            font-size: 18px;
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
         }
         
-        .previous-views {
-            color: #636e72;
-            font-weight: 600;
-            font-size: 15px;
-        }
-        
-        .current-views {
-            color: #00CEC9;
-            font-weight: 800;
-            font-size: 16px;
-        }
-        
-        .increase-views {
-            font-weight: 900;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            justify-content: center;
-        }
-
-        .increase-views.positive {
-            color: #ff6b6b;
-        }
-
-        .increase-views.negative {
-            color: #0984e3;
-        }
-
-        .increase-views.zero {
-            color: #636e72;
-        }
-
-        .arrow-icon {
-            font-size: 20px;
-            font-weight: 900;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.show {
-            display: flex;
-        }
-        
-        .modal-content {
+        .program-btn {
             background: white;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 450px;
-            width: 90%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            animation: slideIn 0.3s ease;
-        }
-        
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .modal-header {
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 12px;
+            border-radius: 10px;
             text-align: center;
-            margin-bottom: 25px;
-        }
-        
-        .modal-header h2 {
-            font-size: 24px;
-            color: #2d3436;
-            margin-bottom: 8px;
-        }
-        
-        .modal-input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        
-        .modal-input:focus {
-            outline: none;
-            border-color: #00CEC9;
-        }
-        
-        .modal-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-        }
-        
-        .modal-btn {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 700;
+            font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: block;
         }
         
-        .modal-btn-primary {
-            background: linear-gradient(135deg, #00CEC9 0%, #14FFEC 100%);
+        .program-btn:hover {
+            background: #667eea;
             color: white;
+            transform: scale(1.05);
         }
         
-        .modal-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 206, 201, 0.4);
-        }
-        
-        .modal-btn-secondary {
-            background: #636e72;
-            color: white;
-        }
-        
-        .modal-btn-secondary:hover {
-            background: #2d3436;
-        }
-        
-        .error-msg {
-            color: #ff4757;
-            font-size: 14px;
-            margin-top: 10px;
-            display: none;
-        }
-        
-        .admin-panel {
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        .admin-table {
+        .divider {
             margin: 20px 0;
-        }
-        
-        .admin-row {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            margin-bottom: 10px;
-        }
-        
-        .admin-song-title {
-            flex: 1;
-            font-weight: 700;
-            color: #2d3436;
-            font-size: 14px;
-        }
-        
-        .admin-input {
-            width: 150px;
-            padding: 10px;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-        }
-        
-        .admin-input:focus {
-            outline: none;
-            border-color: #00CEC9;
-        }
-        
-        .footer {
-            background: white;
-            padding: 25px;
-            text-align: center;
-            color: #636e72;
-            border-radius: 0 0 20px 20px;
-        }
-        
-        .footer-heart {
-            color: #00CEC9;
-            animation: heartbeat 1.5s ease-in-out infinite;
-            display: inline-block;
-        }
-        
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            10%, 30% { transform: scale(1.2); }
-            20%, 40% { transform: scale(1); }
-        }
-        
-        .firebase-status {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 206, 201, 0.9);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.4);
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 { font-size: 32px; }
-            .header h2 { font-size: 24px; }
-            .video-title { font-size: 20px; }
-            .admin-song-title { font-size: 12px; }
-            .admin-input { width: 100px; }
+            padding-top: 20px;
+            border-top: 2px dashed #ddd;
         }
     </style>
 </head>
 <body>
-    <div class="floating-hearts" id="floatingHearts"></div>
-    <div class="firebase-status" id="firebaseStatus">🔄 연결 중...</div>
-
-    <div class="modal" id="passwordModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div style="font-size: 48px; margin-bottom: 10px;">🔐</div>
-                <h2>관리자 인증</h2>
-                <p style="color: #636e72; font-size: 14px;">비밀번호를 입력하세요</p>
-            </div>
-            <input type="password" class="modal-input" id="passwordInput" placeholder="비밀번호" onkeypress="if(event.key==='Enter') checkPassword()">
-            <p class="error-msg" id="passwordError">비밀번호가 올바르지 않습니다</p>
-            <div class="modal-buttons">
-                <button class="modal-btn modal-btn-secondary" onclick="closePasswordModal()">취소</button>
-                <button class="modal-btn modal-btn-primary" onclick="checkPassword()">확인</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="adminModal">
-        <div class="modal-content admin-panel">
-            <div class="modal-header">
-                <h2>⚙️ 조회수 관리</h2>
-                <p style="color: #636e72; font-size: 14px;">Firebase 실시간 동기화</p>
-            </div>
-            <div class="admin-table" id="adminTable"></div>
-            <div class="modal-buttons">
-                <button class="modal-btn modal-btn-secondary" onclick="closeAdminModal()">취소</button>
-                <button class="modal-btn modal-btn-primary" onclick="saveAdminData()">💾 저장</button>
-            </div>
-        </div>
-    </div>
-
     <div class="container">
-        <div class="header">
-            <div class="admin-lock" onclick="showPasswordModal()">🔒</div>
-            <h1> 장민호 </h1>
-            <h2>ANALOG Vol.1</h2>
-            <div class="live-badge">🔴 LIVE 총공 진행중</div>
-        </div>
-
-        <div class="mission-banner">
-            🔥 목표를 향하여 으라차차차! 🔥
-        </div>
-
-        <div class="video-container">
-            <div class="video-wrapper">
-                <iframe id="videoFrame" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h1>📻 라디오 선곡표 바로가기</h1>
+        
+        <!-- 오전 시간대 -->
+        <div class="time-section">
+            <div class="time-header">
+                <span class="time-icon">🌅</span>
+                <span class="time-title">오전 방송</span>
+                <span class="time-range">06:00 - 12:00</span>
             </div>
-            <div class="video-info">
-                <div class="now-playing">
-                    <span>▶</span> NOW PLAYING
+            
+            <div class="program-section">
+                <div class="program-title">
+                    <span>📻</span>
+                    <span>주현미의 러브레터 (매일 09:00-11:00)</span>
                 </div>
-                <div class="video-title" id="videoTitle">-</div>
-                <div class="timer-box">
-                    ⏱️ 다음 곡까지 <span class="timer-number" id="countdown">-</span>
+                <div class="button-grid">
+                    <a href="https://program.kbs.co.kr/2radio/radio/loveletter/pc/board.html?smenu=2e5674&bbs_loc=R2020-0191-03-238908,list,none,1,0" class="program-btn" target="_blank">KBS 해피FM</a>
                 </div>
-                <button class="next-btn" onclick="playNextRandom()">🔄 다음 곡 랜덤 재생</button>
+            </div>
+            
+            <div class="program-section divider">
+                <div class="program-title">
+                    <span>📻</span>
+                    <span>이숙영의 러브FM (매일 09:05-11:00)</span>
+                </div>
+                <div class="button-grid">
+                    <a href="https://programs.sbs.co.kr/radio/lovefm/songlist/57555" class="program-btn" target="_blank">SBS 러브FM</a>
+                </div>
             </div>
         </div>
-
-        <div class="stats-section">
-            <h3 style="margin-bottom: 20px; color: #2d3436; font-size: 24px; font-weight: 800;">
-                📈 실시간 조회수 현황
-            </h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>곡명</th>
-                            <th>이전</th>
-                            <th>현재</th>
-                            <th>증감</th>
-                        </tr>
-                    </thead>
-                    <tbody id="songTable"></tbody>
-                </table>
+        
+        <!-- 점심/오후 시간대 -->
+        <div class="time-section">
+            <div class="time-header">
+                <span class="time-icon">☀️</span>
+                <span class="time-title">점심/오후 방송</span>
+                <span class="time-range">12:00 - 18:00</span>
+            </div>
+            
+            <div class="program-section">
+                <div class="program-title">
+                    <span>🎵</span>
+                    <span>TBN 김효진, 양상국의 12시에 만나요 (평일 12:05-13:55)</span>
+                </div>
+                <div class="button-grid">
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=515&menu_seq=8110&area_code=1" class="program-btn" target="_blank">전국</a>
+                </div>
+            </div>
+            
+            <div class="program-section divider">
+                <div class="program-title">
+                    <span>🎤</span>
+                    <span>손태진의 트로트 라디오 (평일 12:20-13:52 / 주말 12:10-13:52)</span>
+                </div>
+                <div class="button-grid">
+                    <a href="https://www.imbc.com/broad/radio/fm/trot/musictable/index.html" class="program-btn" target="_blank">MBC 표준FM</a>
+                </div>
+            </div>
+            
+            <div class="program-section divider">
+                <div class="program-title">
+                    <span>🚗</span>
+                    <span>TBN 차차차 (평일 점심 시간대)</span>
+                </div>
+                <div class="button-grid">
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=161&menu_seq=2082&area_code=2" class="program-btn" target="_blank">부산</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=172&menu_seq=2225&area_code=3" class="program-btn" target="_blank">광주</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=183&menu_seq=2368&area_code=4" class="program-btn" target="_blank">대구</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=194&menu_seq=2511&area_code=5" class="program-btn" target="_blank">대전</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=206&menu_seq=2667&area_code=6" class="program-btn" target="_blank">경인</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=216&menu_seq=2797&area_code=7" class="program-btn" target="_blank">강원</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=227&menu_seq=2940&area_code=8" class="program-btn" target="_blank">전북</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=306&menu_seq=3967&area_code=" class="program-btn" target="_blank">울산</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=324&menu_seq=4201&area_code=10" class="program-btn" target="_blank">경남</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=388&menu_seq=5033&area_code=11" class="program-btn" target="_blank">경북</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=396&menu_seq=5137&area_code=12" class="program-btn" target="_blank">제주</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=433&menu_seq=6960&area_code=13" class="program-btn" target="_blank">충북</a>
+                </div>
+            </div>
+            
+            <div class="program-section divider">
+                <div class="program-title">
+                    <span>🎵</span>
+                    <span>은가은의 빛나는 트로트 (매일 14:00-16:00)</span>
+                </div>
+                <div class="button-grid">
+                    <a href="https://program.kbs.co.kr/2radio/radio/trot/pc/board.html?smenu=6c6728&bbs_loc=R2024-0030-03-196073,list,none,1,0" class="program-btn" target="_blank">KBS 해피FM</a>
+                </div>
+            </div>
+            
+            <div class="program-section divider">
+                <div class="program-title">
+                    <span>🎉</span>
+                    <span>박준형, 박영진의 2시 만세 (매일 14:05-16:00)</span>
+                </div>
+                <div class="button-grid">
+                    <a href="https://www.imbc.com/broad/radio/fm/hurray/musictable/" class="program-btn" target="_blank">MBC 표준FM</a>
+                </div>
+            </div>
+            
+            <div class="program-section divider">
+                <div class="program-title">
+                    <span>💝</span>
+                    <span>언제나 좋은날 채리입니다 (매일 14:05-16:00)</span>
+                </div>
+                <div class="button-grid">
+                    <a href="https://www.ifm.kr/program/board/ppum/290" class="program-btn" target="_blank">경인방송 iFM</a>
+                </div>
             </div>
         </div>
-
-        <div class="footer">
-            💙 Made with <span class="footer-heart"></span> by 민호특공대💙
-            <div style="margin-top: 10px; font-size: 15px; font-weight: 700; color: #00CEC9;">
-                ✨ 민호특공대 함께라면 무엇이든 할 수 있습니다 ✨
+        
+        <!-- 저녁 시간대 -->
+        <div class="time-section">
+            <div class="time-header">
+                <span class="time-icon">🌆</span>
+                <span class="time-title">저녁 방송</span>
+                <span class="time-range">17:00 - 20:00</span>
+            </div>
+            
+            <div class="program-section">
+                <div class="program-title">
+                    <span>🚙</span>
+                    <span>달리는 라디오 (17:00-18:52)</span>
+                </div>
+                <div class="button-grid">
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=208&menu_seq=2693&area_code=6" class="program-btn" target="_blank">경인</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=345&menu_seq=4474&area_code=11" class="program-btn" target="_blank">경북</a>
+                </div>
+            </div>
+            
+            <div class="program-section divider">
+                <div class="program-title">
+                    <span>🚙</span>
+                    <span>달리는 라디오 (18:05-19:55)</span>
+                </div>
+                <div class="button-grid">
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=163&menu_seq=2108&area_code=2" class="program-btn" target="_blank">부산</a>
+                    <a href="https://www.tbn.or.kr/program/main.tbn?area_code=3&forum_seq=174" class="program-btn" target="_blank">광주</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=185&menu_seq=2394&area_code=4" class="program-btn" target="_blank">대구</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=196&menu_seq=2537&area_code=5" class="program-btn" target="_blank">대전</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=218&menu_seq=2823&area_code=7" class="program-btn" target="_blank">강원</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=229&menu_seq=2966&area_code=8" class="program-btn" target="_blank">전북</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=291&menu_seq=3772&area_code=9" class="program-btn" target="_blank">울산</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=321&menu_seq=4162&area_code=10" class="program-btn" target="_blank">경남</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=399&menu_seq=5176&area_code=12" class="program-btn" target="_blank">제주</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=434&menu_seq=6973&area_code=13" class="program-btn" target="_blank">충북</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 밤 시간대 -->
+        <div class="time-section">
+            <div class="time-header">
+                <span class="time-icon">🌙</span>
+                <span class="time-title">밤 방송</span>
+                <span class="time-range">20:00 - 22:00</span>
+            </div>
+            
+            <div class="program-section">
+                <div class="program-title">
+                    <span>🎶</span>
+                    <span>TBN 김승연의 가요본색 (평일 20:00-21:55)</span>
+                </div>
+                <div class="button-grid">
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=503&menu_seq=7952&area_code=1" class="program-btn" target="_blank">전국</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 주말 시간대 -->
+        <div class="time-section">
+            <div class="time-header">
+                <span class="time-icon">🎉</span>
+                <span class="time-title">주말 방송</span>
+                <span class="time-range">토요일 · 일요일</span>
+            </div>
+            
+            <div class="program-section">
+                <div class="program-title">
+                    <span>🚗</span>
+                    <span>TBN 주말 (점심 시간대)</span>
+                </div>
+                <div class="button-grid">
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=302&menu_seq=3915&area_code=2" class="program-btn" target="_blank">부산</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=525&menu_seq=8260&area_code=2" class="program-btn" target="_blank">광주</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=372&menu_seq=4825&area_code=2" class="program-btn" target="_blank">대구</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=482&menu_seq=7679&area_code=2" class="program-btn" target="_blank">경인</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=516&menu_seq=8125&area_code=2" class="program-btn" target="_blank">강원</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=489&menu_seq=7770&area_code=2" class="program-btn" target="_blank">전북</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=311&menu_seq=4032&area_code=2" class="program-btn" target="_blank">울산</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=493&menu_seq=7822&area_code=2" class="program-btn" target="_blank">경남</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=337&menu_seq=4370&area_code=2" class="program-btn" target="_blank">경북</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=404&menu_seq=5241&area_code=2" class="program-btn" target="_blank">제주</a>
+                    <a href="https://www.tbn.or.kr/program/list.tbn?forum_seq=530&menu_seq=8335&area_code=1" class="program-btn" target="_blank">충남</a>
+                </div>
             </div>
         </div>
     </div>
-
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-
-    <script>
-        // ========================================
-        // 🔥 Firebase 설정 - C링크용
-        // ⚠️ 반드시 새로운 Firebase 프로젝트 정보로 변경하세요!
-        // (B링크와 같은 Firebase를 사용하면 데이터가 겹칩니다)
-        // ========================================
-        const firebaseConfig = {
-            apiKey: "YOUR_NEW_C_LINK_API_KEY",
-            authDomain: "your-c-project.firebaseapp.com",
-            databaseURL: "https://your-c-project-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "your-c-project-id",
-            storageBucket: "your-c-project.firebasestorage.app",
-            messagingSenderId: "YOUR_SENDER_ID",
-            appId: "YOUR_APP_ID",
-            measurementId: "YOUR_MEASUREMENT_ID"
-        };
-
-        const ADMIN_PASSWORD = "@minho0728";
-        
-        const videos = [
-         
-            { id: 'Ghg7vG3NMs4', title: 'Hankyeryeong Pass', initialViews: 56307 },
-            { id: 'ILppFoa3FTI', title: 'Lonely Love', initialViews: 34898 },
-            { id: 'DKgiBUaZXr4', title: 'My Reflection in My Heart', initialViews: 73725 },
-            { id: 'BRiBNS0aTVo', title: '내 곁에 있어주 | 야외녹음실 ｜LIVE', initialViews: 269420 },
-            { id: '1LlNcwtxsgg', title: 'I\'ll Give You the Love I Have Left', initialViews: 60307},
-            { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 46916 },
-            { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews: 39676 },
-            { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 279481 },
-            { id: '0JeQF_nrSmU', title: '내 곁에 있어주 (Stay by My Side) Official MV', initialViews: 87081 },
-            { id: '33xZoSnV5t0', title: 'Stay by My Side(내 곁에 있어주) | 1theK', initialViews: 31758 },
-            { id: 'ZJo6KHpI-2k', title: '한계령 (Hankyeryeong Pass) Official MV', initialViews:65623 },
-            { id: 'C7Y9D4hV3QU', title: 'Hankyeryeong Pass(한계령) | 1theK', initialViews: 13160 },
-            { id: 'iQ4CCJgJKXM', title: '홀로된 사랑 | 트롯챔피언 | EP.72', initialViews: 47374},
-            { id: '-zYhlQn6yVI', title: '내 이름 아시죠 | 사랑의콜센타', initialViews: 8833996},
-            { id: 'ZOPl8hBKd5c', title: ' 하이뮨의 NEW CF 촬영 현장', initialViews: 10202 },
-            { id: 'jXJKJc5fZnE', title: '홀로된 사랑 (Lonely Love) Official MV', initialViews: 0},
-            { id: '6lq_G6l4xRs', title: 'Lonely Love(홀로된 사랑) | 1theK', initialViews: 0 }
-            
-        ];
-
-        let db;
-        let currentIndex = 0;
-        let isPlaying = false;
-        let countdown = 0;
-        let timerInterval;
-        let viewsData = {};
-        let previousViews = {};
-
-        function initializeFirebase() {
-            try {
-                firebase.initializeApp(firebaseConfig);
-                db = firebase.database();
-                
-                videos.forEach((video, index) => {
-                    db.ref('views/' + index).once('value', (snapshot) => {
-                        if (!snapshot.exists()) {
-                            db.ref('views/' + index).set(video.initialViews);
-                        }
-                    });
-                });
-
-                db.ref('views').on('value', (snapshot) => {
-                    const newData = snapshot.val() || {};
-                    // 이전 값 저장
-                    Object.keys(viewsData).forEach(key => {
-                        if (viewsData[key] !== newData[key]) {
-                            previousViews[key] = viewsData[key];
-                        }
-                    });
-                    viewsData = newData;
-                    updateUI();
-                });
-
-                document.getElementById('firebaseStatus').textContent = '✅ Firebase 연결됨';
-                setTimeout(() => {
-                    document.getElementById('firebaseStatus').style.display = 'none';
-                }, 3000);
-                
-                console.log('✅ Firebase 연결 성공');
-            } catch (error) {
-                console.error('Firebase 초기화 실패:', error);
-                document.getElementById('firebaseStatus').textContent = '⚠️ Firebase 오류';
-                document.getElementById('firebaseStatus').style.background = 'rgba(255, 107, 107, 0.9)';
-                
-                videos.forEach((video, index) => {
-                    viewsData[index] = video.initialViews;
-                    previousViews[index] = video.initialViews;
-                });
-                updateUI();
-            }
-        }
-
-        function updateUI() {
-            let tableHTML = '';
-
-            videos.forEach((video, index) => {
-                const currentViews = viewsData[index] || video.initialViews;
-                const prevViews = previousViews[index] || video.initialViews;
-                const change = currentViews - prevViews;
-                const isCurrentPlaying = index === currentIndex && isPlaying;
-                
-                let arrow = '';
-                let changeClass = '';
-                if (change > 0) {
-                    arrow = '↑';
-                    changeClass = 'positive';
-                } else if (change < 0) {
-                    arrow = '↓';
-                    changeClass = 'negative';
-                } else {
-                    arrow = '→';
-                    changeClass = 'zero';
-                }
-
-                tableHTML += `
-                    <tr class="${isCurrentPlaying ? 'playing' : ''}" onclick="playVideo(${index})">
-                        <td>
-                            <div class="song-title">
-                                ${isCurrentPlaying ? '<span class="play-icon">▶</span>' : ''}
-                                ${video.title}
-                            </div>
-                        </td>
-                        <td><span class="previous-views">${prevViews.toLocaleString()}</span></td>
-                        <td><span class="current-views">${currentViews.toLocaleString()}</span></td>
-                        <td>
-                            <span class="increase-views ${changeClass}">
-                                <span class="arrow-icon">${arrow}</span>
-                                ${change > 0 ? '+' : ''}${change.toLocaleString()}
-                            </span>
-                        </td>
-                    </tr>
-                `;
-            });
-
-            document.getElementById('songTable').innerHTML = tableHTML;
-        }
-
-        function playVideo(index) {
-            currentIndex = index;
-            isPlaying = true;
-            
-            document.getElementById('videoFrame').src = 
-                `https://www.youtube.com/embed/${videos[index].id}?autoplay=1&controls=1`;
-            document.getElementById('videoTitle').textContent = videos[index].title;
-
-            const randomDuration = Math.floor(Math.random() * 31) + 75;
-            startTimer(randomDuration);
-            updateUI();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function playNextRandom() {
-            let nextIndex;
-            do {
-                nextIndex = Math.floor(Math.random() * videos.length);
-            } while (nextIndex === currentIndex && videos.length > 1);
-            playVideo(nextIndex);
-        }
-
-        function startTimer(duration) {
-            countdown = duration;
-            updateTimer();
-
-            if (timerInterval) clearInterval(timerInterval);
-
-            timerInterval = setInterval(() => {
-                countdown--;
-                updateTimer();
-
-                if (countdown <= 0) {
-                    clearInterval(timerInterval);
-                    playNextRandom();
-                }
-            }, 1000);
-        }
-
-        function updateTimer() {
-            document.getElementById('countdown').textContent = countdown + '초';
-        }
-
-        function showPasswordModal() {
-            document.getElementById('passwordModal').classList.add('show');
-            document.getElementById('passwordInput').value = '';
-            document.getElementById('passwordError').style.display = 'none';
-            document.getElementById('passwordInput').focus();
-        }
-
-        function closePasswordModal() {
-            document.getElementById('passwordModal').classList.remove('show');
-        }
-
-        function checkPassword() {
-            const input = document.getElementById('passwordInput').value;
-            if (input === ADMIN_PASSWORD) {
-                closePasswordModal();
-                showAdminModal();
-            } else {
-                document.getElementById('passwordError').style.display = 'block';
-            }
-        }
-
-        function showAdminModal() {
-            let adminHTML = '';
-            videos.forEach((video, index) => {
-                const currentViews = viewsData[index] || video.initialViews;
-                adminHTML += `
-                    <div class="admin-row">
-                        <div class="admin-song-title">${video.title}</div>
-                        <input type="number" class="admin-input" id="admin-${index}" value="${currentViews}">
-                    </div>
-                `;
-            });
-            document.getElementById('adminTable').innerHTML = adminHTML;
-            document.getElementById('adminModal').classList.add('show');
-        }
-
-        function closeAdminModal() {
-            document.getElementById('adminModal').classList.remove('show');
-        }
-
-        function saveAdminData() {
-            if (!db) {
-                alert('❌ Firebase 연결이 필요합니다. 페이지를 새로고침하세요.');
-                return;
-            }
-
-            videos.forEach((video, index) => {
-                const input = document.getElementById('admin-' + index);
-                const value = parseInt(input.value) || 0;
-                db.ref('views/' + index).set(value);
-            });
-
-            closeAdminModal();
-            alert('✅ 저장 완료! 모든 사용자에게 실시간 반영됩니다.');
-        }
-
-        function createFloatingHearts() {
-            const container = document.getElementById('floatingHearts');
-            const hearts = ['💙', '💚', '🩵', '💎', '✨'];
-            
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.animationDelay = Math.random() * 2 + 's';
-                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                container.appendChild(heart);
-
-                setTimeout(() => heart.remove(), 7000);
-            }, 800);
-        }
-
-        window.onload = function() {
-            initializeFirebase();
-            createFloatingHearts();
-            setTimeout(() => {
-                const randomStart = Math.floor(Math.random() * videos.length);
-                playVideo(randomStart);
-            }, 500);
-        };
-    </script>
 </body>
-
 </html>
